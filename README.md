@@ -67,4 +67,13 @@ A function to connect to the server **(Only used in TCP Mode)**
 A function to disconnect from the server **(Only used in TCP Mode)**
 ```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
 <br><br><br><br>
-``````
+```uint8_t W51_sendData(SOCKET sock, uint8_t* data, unsigned int datalen);```
+
+Function to send data through socket
+```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
+```uint8_t* data```: Data buffer to be sent
+```unsigned int datalen```: Length of the data to be sent
+NOTE: The maximum one transaction transmitting length is 2048 bytes
+<br><br><br><br>
+```uint16_t W51_getReceivedDataLen(SOCKET sock);```
+Function to get received data length
