@@ -1,11 +1,3 @@
-/*
- * W5100.h
- *
- * Created: 03.07.2023 14:07:34
- *  Author: filip
- */ 
-
-
 #ifndef W5100_H_
 #define W5100_H_
 #endif /* W5100_H_ */
