@@ -1,11 +1,3 @@
-/*
- * W51_regFunc.h
- *
- * Created: 30.06.2023 21:14:31
- *  Author: filip
- */ 
-
-
 #ifndef W51_REGFUNC_H_
 #define W51_REGFUNC_H_
 
