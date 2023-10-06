@@ -1,9 +1,3 @@
-/*
- * W5100.c
- *
- * Created: 03.07.2023 14:05:35
- *  Author: filip
- */ 
 #include <avr/io.h>
 
 #ifndef F_CPU
