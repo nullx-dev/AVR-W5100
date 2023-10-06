@@ -1,6 +1,13 @@
 # AVR-W5100
 A simple easy-to-use library for Wiznet W5100 Ethernet controller for AVR Microcontrollers
 
+Tested on ATMega328P, can be easily ported to all SPI-enabled AVR microcontrollers by editing the ```W51_regFunc.c``` file.
+
+Supported protocols are TCP and UDP, maximum 4 open sockets.
+
+**This library is only for W5100, not W5500**
+
+All examples are located in the example directory.
 
 # Function Descriptions
 ## W5100 Initialization Functions
@@ -60,20 +67,45 @@ NOTE: This function does not delete the socket structure, it only closes the phy
 ```uint8_t W51_connectSocket(SOCKET sock);```
 
 A function to connect to the server **(Only used in TCP Mode)**
+
+```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
+<br><br><br><br>
+```uint8_t W51_listenSocket(SOCKET sock);```
+
+Function to listen for incoming connections
+
 ```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
 <br><br><br><br>
 ```uint8_t W51_disconnectSocket(SOCKET sock);```
 
 A function to disconnect from the server **(Only used in TCP Mode)**
+
 ```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
 <br><br><br><br>
 ```uint8_t W51_sendData(SOCKET sock, uint8_t* data, unsigned int datalen);```
 
 Function to send data through socket
+
 ```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
+
 ```uint8_t* data```: Data buffer to be sent
+
 ```unsigned int datalen```: Length of the data to be sent
+
 NOTE: The maximum one transaction transmitting length is 2048 bytes
 <br><br><br><br>
 ```uint16_t W51_getReceivedDataLen(SOCKET sock);```
-Function to get received data length
+
+Function to get received data length in bytes
+
+```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
+<br><br><br><br>
+```uint8_t W51_receiveData(SOCKET sock, unsigned int length, uint8_t* data);```
+
+Function to receive data from a socket
+
+```SOCKET sock```: Opened, initialized socket structure with all necessary parameters
+
+```unsigned int length```: Length of data to be received
+
+```uint8_t* data```: Buffer for data to be received
