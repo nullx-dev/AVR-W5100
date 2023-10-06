@@ -23,8 +23,8 @@ int main(){
 	
 	W51_initSocket(WoLsock);
 	W51_openSocket(WoLsock);
-  _delay_ms(1000);
-  W51_sendData(WoLsock, magicPacket, 102);
+  	_delay_ms(1000);
+  	W51_sendData(WoLsock, magicPacket, 102);
 	
 	while(1){
     
