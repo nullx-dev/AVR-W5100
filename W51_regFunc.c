@@ -15,7 +15,9 @@ void W51_init(void) //function to initialize SPI interface
 	DDRB |= (1 << CS) | (1 << SCK) | (1 << MOSI); //set SCK, MOSI, and chip select(CS) as output
 	PORTB |= (1 << CS); //set CS high (device is unselected)
 	SPCR = (1 << SPE) | (1 << MSTR); //enable SPI master mode
+	#if F_CPU > 14000000 //if speed is higher than 14MHz
 	SPSR |= (1 << SPI2X); //set SPI speed to Fosc/2 because max speed is 14MHz
+	#endif
 	_delay_us(100); //wait for SPI init
 }
 
