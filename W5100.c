@@ -175,32 +175,23 @@ uint8_t W51_receiveData(SOCKET sock, unsigned int length, uint8_t* data){ //func
 void W51_setINET(uint8_t* ipaddr, uint8_t* macaddr, uint8_t* gateaddr, uint8_t* subaddr){ //function to init the W5100 addresses
 	//the base address register addresses are defined as GAR, SAR, SUBR and SIPR. The additional byte registers must be derived by adding a value
 	//set gateway address
-	W51_write(GAR, gateaddr[0]);
-	W51_write(GAR + 1, gateaddr[1]);
-	W51_write(GAR + 2, gateaddr[2]);
-	W51_write(GAR + 3, gateaddr[3]);
-	_delay_ms(10);
-	
+	for(int i = 0; i < 4; i++){
+		W51_write(GAR + i, gateaddr[i]);
+	}
+
 	//set MAC address (SAR)
-	W51_write(SAR, macaddr[0]);
-	W51_write(SAR + 1, macaddr[1]);
-	W51_write(SAR + 2, macaddr[2]);
-	W51_write(SAR + 3, macaddr[3]);
-	W51_write(SAR + 4, macaddr[4]);
-	W51_write(SAR + 5, macaddr[5]);
-	_delay_ms(10);
+	for(int i = 0; i < 6; i++){
+		W51_write(SAR + i, macaddr[i]);
+	}
 	
 	//set subnet mask (SUBR)
-	W51_write(SUBR, subaddr[0]);
-	W51_write(SUBR + 1, subaddr[1]);
-	W51_write(SUBR + 2, subaddr[2]);
-	W51_write(SUBR + 3, subaddr[3]);
-	_delay_ms(10);
+	for(int i = 0; i < 4; i++){
+		W51_write(SUBR + i, subaddr[i]);
+	}
 	
 	//set IP address (SIPR)
-	W51_write(SIPR, ipaddr[0]);
-	W51_write(SIPR + 1, ipaddr[1]);
-	W51_write(SIPR + 2, ipaddr[2]);
-	W51_write(SIPR + 3, ipaddr[3]);
+	for(int i = 0; i < 4; i++){
+		W51_write(SIPR + i, ipaddr[i]);
+	}
 	_delay_ms(2000); //delay for network connection (adjust by network speed)
 }
