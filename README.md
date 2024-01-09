@@ -15,7 +15,7 @@ All examples are located in the example directory.
 
 This initializes the W5100. Please adjust the pin settings in ```W51_regFunc.h``` file by your microcontroller model. 
 
-If your microcontroller has SPI speed lower than 14MHz, you can remove this line in ```W51_regFunc.c```: ```SPSR |= (1 << SPI2X);```
+```F_CPU``` must be defined to use this library.
 <br><br><br><br>
 ```void W51_setINET(uint8_t* ipaddr, uint8_t* macaddr, uint8_t* gateaddr, uint8_t* subaddr);```
 
